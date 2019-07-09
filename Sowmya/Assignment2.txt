@@ -1,0 +1,186 @@
+<script src="https://cdn.jsdelivr.net/npm/vue">
+</script>
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+  <div style="width: 50%;padding-left: 5px;">
+    <h2>Nazmiyal</h2>
+    <table style="width:100%" align="left">
+      <tr>
+        <th style="text-align: left;">Select Product</th>
+        <th style="text-align: left;">Product ID</th>
+      </tr>
+      <tr>
+        <td>
+          <select v-model="selected" style="width:352px;padding-right: 5px;">
+ <option v-for="option in options" v-bind:value="option.value">
+ {{ option.text }}</option></select>
+        </td>
+        <td>
+          <input v-model="Product" style="width:352px" class="form-control" id="ProductID" v-on:blur="myFunction" placeholder="Product ID">
+        </td>
+      </tr>
+
+        <tr>
+          <th style="text-align: left;">Name</th>
+        </tr>
+        <tr>
+          <td colspan="2"><input v-model="Name" style="width:825px" class="form-control" id="Name" placeholder="Name"></td>
+        </tr>
+
+        <tr class="blank_row">
+          <td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <th style="text-align: left;">Price</th>
+          <th style="text-align: left;">Dated</th>
+        </tr>
+        <tr>
+          <td>
+            <input v-model="Price" style="width:352px" class="form-control" id="Price" v-on:blur="myFunction1" placeholder="Price">
+          </td>
+          <td>
+            <input v-model="Dated" style="width:352px" class="form-control" id="Dated" placeholder="Dated">
+          </td>
+        </tr>
+        <tr class="blank_row">
+          <td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <th style="text-align: left;">Size</th>
+          <th style="text-align: left;">Description</th>
+        </tr>
+        <tr>
+          <td>
+            <input v-model="Size" style="width:352px" class="form-control" id="Size" placeholder="Size">
+          </td>
+          <td>
+            <textarea v-model="Description" rows="1" cols="50" style="width:350px;" name="comment" placeholder="Description"></textarea>
+          </td>
+        </tr>
+        <tr class="blank_row">
+          <td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+        </tr>
+    </table>
+    
+    <div id="dynamic-component-demo" class="demo">
+  <button
+    v-for="tab in tabs"
+    v-bind:key="tab"
+    v-bind:class="['tab-button', { active: currentTab === tab }]"
+    v-on:click="currentTab = tab"
+  >{{ tab }}</button>
+
+  <component
+    v-bind:is="currentTabComponent"
+    class="tab">      
+    </component>
+</div> 
+    <br/>
+    <button style="padding-left:5px;border-radius: 5px;background-color: blue;color: white;border-color:blue" v-on:click="btnFunction()"><i><b>Send Product Updates</b></i></button>
+    <P v-if="show">
+Product updated successfully!!
+</P>
+    <br/>
+  </div>
+ </div>
+
+ 
+Vue.component('tab-1stDibs', { 
+	template: '<div><table style="width:100%"><tr><th style="text-align: left;">Style</th><th style="text-align: left;">Origin</th></tr><tr><td><input type="text" style="width:350px" class="form-control" id="Style" placeholder="Style"></td><td><input type="text" style="width:350px" class="form-control" id="Origin" placeholder="Origin"></td></tr><tr class="blank_row">          <td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr><tr>          <th style="text-align: left;">Material</th><th style="text-align: left;">Condition</th></tr><tr><td><input type="text" style="width:350px" class="form-control" id="Material" placeholder="Material"></td><td><input type="text" style="width:350px" class="form-control" id="Condition" placeholder="Condition"></td></tr><tr class="blank_row">       <td bgcolor="#FFFFFF" colspan="2">&nbsp;</td></tr><tr>          <th style="text-align: left;">Seller Reference Number</th>          <th style="text-align: left;">Reference Number</th>        </tr>        <tr>          <td>            <input type="text" style="width:350px" class="form-control" id="SellerReferenceNumber" placeholder="Seller Reference Number">          </td>          <td>            <input type="text" style="width:350px" class="form-control" id="ReferenceNumber" placeholder="Reference Number">          </td>        </tr>        <tr class="blank_row">          <td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>        </tr>        <tr>          <th style="text-align: left;">Seller Location</th>        </tr>        <tr>          <td>            <input type="text" style="width:350px" class="form-control" id="SellerLocation" placeholder="Seller Location">          </td>        </tr>      </table></div>'
+})
+Vue.component('tab-Artsy', { 
+	template: '<div>Artsy component</div>' 
+})
+Vue.component('tab-Art', { 
+	template: '<div>Art component</div>' 
+})
+
+new Vue({
+  el: '#dynamic-component-demo',
+  data: {    
+    currentTab: '1stDibs',
+    tabs: ['1stDibs', 'Artsy', 'Art'],    
+    
+  },
+  computed: {
+    currentTabComponent: function () {
+      return 'tab-' + this.currentTab
+    }
+  }
+})
+
+new Vue({
+    el: '#app',
+    data: {
+      message: "",
+      Product: "",
+      Name: "",
+      Price: "",
+      Dated: "",
+      Size: "",
+      Description: "",
+      show: false,
+      selected: 'A',
+      options: [{
+          text: 'SELECT',
+          value: 'A'
+        },
+        {
+          text: 'ANTIQUE TURKISH OUSHAK RUG',
+          value: 'B'
+        },
+        {
+          text: 'ANTIQUE TURKISH OUSHAK CARPET',
+          value: 'C'
+        },
+        {
+          text: 'ANTIQUE TURKISH RUG',
+          value: 'D'
+        },
+        {
+          text: 'ANTIQUE TURKISH CARPET',
+          value: 'E'
+        },
+      ],
+      
+    },
+methods:{
+btnFunction : function(){
+this.show = !this.show;
+},
+myFunction : function(event){
+var x=event.target.value;
+if (isNaN(x)) {
+    alert("Product ID must be numeric");
+}
+},
+myFunction1 : function(event){
+var x=event.target.value;
+if (isNaN(x)) {
+    alert("Price must be numeric");
+}
+},
+}
+})
+
+.tab-button {
+  padding: 6px 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #f0f0f0;
+  margin-bottom: -1px;
+  margin-right: -1px;
+}
+.tab-button:hover {
+  background: #e0e0e0;
+}
+.tab-button.active {
+  background: #e0e0e0;
+}
+.tab {
+  border: 1px solid #ccc;
+  padding: 10px;
+}

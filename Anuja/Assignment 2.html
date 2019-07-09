@@ -1,0 +1,423 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <head>
+    <style>
+   
+<body>
+      input[type=text],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .button:hover {
+        background-color: #3e8e41;
+      }
+
+      }
+
+      input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .button {
+        color: white;
+        background-color: brown;
+        padding: 15px 32px;
+        text-align: center;
+        border-color: #000;
+        display: inline-block;
+        font-size: 16px;
+      }
+
+      .logo {
+        margin: 10px 15px 15px 10px;
+        left: 0;
+        display: inline;
+      }
+
+      .bg-div nav {
+        position: fixed;
+        display: inline;
+        right: 0;
+      }
+
+      body {
+        background-color: antiquewhite;
+      }
+
+      .tabs {
+        overflow: hidden;
+        
+      }
+
+      /* Style the buttons inside the tab */
+
+      .tabs {
+     
+       
+        border: thick;
+        outline: none; //cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+      }
+
+      /* Change background color of buttons on hover */
+
+      .tab button:hover {
+        background-color: #ddd;
+      }
+
+      /* Create an active/current tablink class */
+
+    /*  .tabs  {
+        background-color: #ccc;
+      }*/
+
+      /* Style the tab content */
+
+      .tabcontent {
+        display: none;
+        border-top: none;
+      }
+
+      #myTABLE {
+        margin: 10px;
+      }
+
+    </style>
+  </head>
+
+ 
+    
+
+      <h1></h1><img class="logo" alt="Nazmiyal Antique Rugs" src="https://cdn.nazmiyalantiquerugs.com/wp-content/uploads/2019/03/nazmiyal-logo-1-1.png">
+      <br />
+      <br />
+      
+      <table >
+      
+ 
+        <tr>
+
+          <td style="color:brown;font-weight: bold;"> Select Product </td>
+          <td style="padding-left: 223px; color:brown;font-weight: bold;">Product ID</td>
+        </tr>
+        <tr >
+        
+          <!-- <td id="vue_sample3"> -->
+        <td id="vue_sample3">
+            <select v-model="selected">
+              <option disabled value="">Please select Product</option>
+  <option>Antique Turkish Rug</option>
+  <option>Carpets</option>
+  <option>Rug</option>
+</select>
+<!--   <option v-for="option in options" v-bind:value="option.value">
+    {{ option.text }} -->
+<!--   </option>
+  </select> -->
+            <!-- <select style="width:208px;">
+                        <option value="Antique Turkish Rug">Antique Turkish Rug</option>
+                        <option value="Carpers">Carpets</option>
+                        <option value="Rugs">Rug</option>
+                        <option value="Antique Rugs">Antique Rugs</option>
+                    </select> -->
+                     
+        
+          </td>
+          <td style="padding-left: 223px;">
+       
+          <input {{ selected }} placeholder="Product ID..." >
+     <!--    < <span>Selected: {{ selected }}</span>  -->
+     
+          <!--   <input type="text" id="ProductID" name="ProductID" placeholder="Product ID..."> -->
+          </td>
+           
+        </tr>
+        <tr>
+          <td style="color: brown;font-weight: bold;">Name</td>
+        </tr>
+        <tr>
+          <td>
+       
+          <input v-model="message" placeholder="Product Name...">
+        <!--     <input type="text" id="Name" name="Name" style="width:208px;" required placeholder="Product Name..."> -->
+           
+          </td>
+        </tr>
+
+        <tr>
+          <td style="color: brown;font-weight: bold;">Price</td>
+          <td style="padding-left: 223px;color: brown;font-weight: bold;">Dated</td>
+        </tr>
+        <tr>
+          <td>
+
+          <input v-model="message" placeholder="Product  Price....">
+           <!--  <input type="text" id="Price" name="Price" style="width:208px;" required placeholder="Product Price..." oninput="myFunction()"> -->
+           <!--  <p id="p"></p> -->
+          
+          </td>
+          <td style="padding-left: 223px;">
+           <input v-model="message" placeholder="Product date(DD/MM/YY)....">
+           <!--  <input type="text" id="Dated" name="Dated" style="width:208px;" placeholder="Product date(DD/MM/YY)..."> -->
+
+          </td>
+        </tr>
+
+        <tr>
+          <td style="color:brown;font-weight: bold;">Size</td>
+          <td style="padding-left: 223px;color:brown;font-weight: bold;">Description</td>
+        </tr>
+        <tr>
+          <td>
+          <input v-model="message" placeholder="Product  size....">
+<!--             <input type="text" id="Size" style="width:208px;" name="Size" placeholder="Product size..."> -->
+          </td>
+          <td style="padding-left: 223px;">
+          <textarea v-model="message"  placeholder="Enter Description" style="width:208px;height:38px"></textarea>
+          <!--   <textarea name="message" style="width:208px; height:38px;"></textarea> -->
+          </td>
+        </tr>
+          
+      </table>
+
+
+ 
+
+      <!-- <div id="#app1" width="208px"> -->
+       <!-- <a href='#' class="tab" v-on:click="makeActive('1stDibs')">1stDibs</a>
+        <a href='#' class="tab" v-on:click="makeActive('Artsy')">Artsy</a>
+         <a href='#' class="tab" v-on:click="makeActive('Art')">Art</a>
+         
+       <div class="boxes" id="1stDibs" v-show="isActiveTab('1stDibs')">
+        </div>
+        <div class="boxes" id="Artsy" v-show="isActiveTab('Artsy')"> -->
+        <div id="root" class="container" >
+     <tabs>
+    <tab name="1stDibs" :selected="true">
+     <table>
+          <tr>
+            <td style="color:brown; font-weight: bold;">Style</td><td style="color:brown;padding-left: 223px;font-weight: bold;">Origin</td>
+          </tr>
+          <tr>
+            <td>
+            
+<!--               <input type="text" id="Style" name="Style" style="width:208px;" placeholder="Product Style..."> -->
+               <input v-model="message" placeholder="Product  Style....">
+            </td>
+            <td style="padding-left: 223px;">
+                <input v-model="message" placeholder="Product  Origin....">
+          <!--  <input type="text" id="Origin" name="Origin" style="width:208px;" placeholder="Product Origin..."> -->
+            </td>
+          </tr>
+    
+          <tr>
+            <td style="color:brown; font-weight: bold;">Material</td>
+            <td style="color:brown;padding-left: 223px;font-weight: bold;">Condition</td>
+          </tr>
+          <tr>
+            <td>
+             <input v-model="message" placeholder="Product  Material....">
+<!--               <input type="text" id="Material" name="Material" style="width:208px;" required placeholder="Product Material..."> -->
+            </td>
+            <td style="padding-left: 223px;">
+            <input v-model="message" placeholder="Product  Condition....">
+<!--               <input type="text" id="Condition" name="Condition" style="width:208px;" placeholder="Product Condition..."> -->
+            </td>
+          </tr>
+    
+          <tr>
+            <td style="color:brown; font-weight: bold;">Seller Reference Number</td>
+            <td style="padding-left: 223px;color:brown;font-weight: bold;">Reference Number</td>
+          </tr>
+          <tr>
+            <td>
+             <input v-model="message" placeholder="Seller Reference Number...">
+             <!--  <input type="text" id="Seller Reference Number" name="Seller Reference Number" style="width:208px;" placeholder="Seller Reference Number..."> -->
+            </td>
+            <td style="padding-left: 223px;">
+            <input v-model="message" placeholder=" Reference Number...">
+             <!--  <input type="text" id="Reference Number" name="Reference Number" style="width:208px;" placeholder="Reference Number..."> -->
+            </td>
+          </tr>
+    
+          <tr>
+            <td style="color:brown; font-weight: bold;">Seller Location</td>
+          </tr>
+          <tr>
+            <td>
+             <input v-model="message" placeholder="Seller Location...">
+<!--               <input type="text" id="Seller Location" oninput="myFunction()" name="Seller Location" style="width:208px;" placeholder="Seller Location..."> -->
+            </td>
+          </tr>
+          </table>
+    </tab>
+    <tab name="Artsy">
+      <h1>
+   Artsy product
+  </h1> 
+    </tab>
+    <tab name="Art">
+  <h1>
+   Art product
+  </h1> 
+    </tab>
+  </tabs>
+    </div>
+       
+
+     
+<div id="app">
+            
+              <br />
+              <button v-on:click="alertMe" class="button" align="center">Send Product Updates!</button>      
+           
+           </div>
+  
+<script>
+              
+
+
+
+
+
+new Vue({
+   el: '#vue_sample3',
+   data: {
+   message:"",
+   //checkedNames:[]
+    selected: '',
+/*    options: [
+      { text: 'Antique Turkish Rug', value: 'A' },
+      { text: 'Carpets', value: 'B' },
+      { text: 'Rug', value: 'C' }
+    ], */
+      
+  },
+  }) 
+  new Vue({
+  el: '#app',
+  data: {
+    counter: 0
+  },
+  methods:  {
+  
+ 
+  alertMe:function(){
+  alert("Product has been send!!!'");
+  },
+  
+  }
+})
+
+new Vue({
+    el: '#app1',
+    data: {
+        choice: '1stDibs' // Home is chosen by default
+    },
+    methods: {
+        makeActive: function(val) {
+            this.choice = val;
+        },
+        isActiveTab: function(val) {
+          return this.choice== val;
+        }
+    }
+});
+
+Vue.component('tabs', {
+    template: `
+        <div>
+            <div class="tabs">
+              <ul>
+                <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
+                    <a :href="tab.href" @click="selectTab(tab)">{{ tab.name }}</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tabs-details">
+                <slot></slot>
+            </div>
+        </div>
+    `,
+    
+    data() {
+        return {tabs: [] };
+    },
+    
+    created() {
+        
+        this.tabs = this.$children;
+        
+    },
+    methods: {
+        selectTab(selectedTab) {
+            this.tabs.forEach(tab => {
+                tab.isActive = (tab.name == selectedTab.name);
+            });
+        }
+    }
+});
+
+Vue.component('tab', {
+    
+    template: `
+
+        <div v-show="isActive"><slot></slot></div>
+
+    `,
+    
+    props: {
+        name: { required: true },
+        selected: { default: false}
+    },
+    
+    data() {
+        
+        return {
+            isActive: false
+        };
+        
+    },
+    
+    computed: {
+        
+        href() {
+            return '#' + this.name.toLowerCase().replace(/ /g, '-');
+        }
+    },
+    
+    mounted() {
+        
+        this.isActive = this.selected;
+        
+    }
+});
+
+new Vue({
+    el: '#root'
+});
+
+
+
+
+</script>
+
+
